@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 
-# Author: Kwasi Mensah (kmensah@andrew.cmu.edu)
-# Date: 7/25/2005
 
 from direct.showbase.ShowBase import ShowBase
 from panda3d.core import Filename, Shader
@@ -15,13 +13,11 @@ from direct.actor.Actor import Actor
 import sys
 import os
 
-# Function to put instructions on the screen.
 def addInstructions(pos, msg):
     return OnscreenText(text=msg, style=1, fg=(1, 1, 1, 1),
                         parent=base.a2dTopLeft, align=TextNode.ALeft,
                         pos=(0.08, -pos - 0.04), scale=.05)
 
-# Function to put title on the screen.
 def addTitle(text):
     return OnscreenText(text=text, style=1, fg=(1, 1, 1, 1),
                         parent=base.a2dBottomRight, align=TextNode.ARight,
