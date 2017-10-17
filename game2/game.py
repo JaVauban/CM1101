@@ -24,7 +24,14 @@ def list_of_items(items):
     'money, a student handbook, laptop'
 
     """
-    pass
+    string = ""
+    i = 0
+    for item in items:
+        if(i > 0):
+            string += ", "
+        string += item["name"]
+        i+=1
+    return string
 
 
 def print_room_items(room):
@@ -49,7 +56,8 @@ def print_room_items(room):
     Note: <BLANKLINE> here means that doctest should expect a blank line.
 
     """
-    pass
+    if(len(room["items"]) > 0):
+        print("There is " + list_of_items(room["items"]) + " here.\n")
 
 
 def print_inventory_items(items):
@@ -62,7 +70,7 @@ def print_inventory_items(items):
     <BLANKLINE>
 
     """
-    pass
+    print("You have " + list_of_items(items) + ".\n")
 
 
 def print_room(room):
@@ -113,15 +121,11 @@ def print_room(room):
     """
     # Display room name
     print()
-    print(room["name"].upper())
-    print()
+    print(room["name"].upper() + "\n")
     # Display room description
-    print(room["description"])
-    print()
-
-    #
-    # COMPLETE ME!
-    #
+    print(room["description"] + "\n")
+    print_room_items(room)
+    
 
 def exit_leads_to(exits, direction):
     """This function takes a dictionary of exits and a direction (a particular
@@ -189,10 +193,10 @@ def print_menu(exits, room_items, inv_items):
     for direction in exits:
         # Print the exit name and where it leads to
         print_exit(direction, exit_leads_to(exits, direction))
-
-    #
-    # COMPLETE ME!
-    #
+    
+    items = list_of_items(player.current_room["items"])
+    for item in items:
+        print("TAKE " + item["id"])
     
     print("What do you want to do?")
 
@@ -222,7 +226,10 @@ def execute_go(direction):
     (and prints the name of the room into which the player is
     moving). Otherwise, it prints "You cannot go there."
     """
-    pass
+    if(is_valid_exit(player.current_room["exits"], direction)):
+        current_room = player.current_room["exits"][direction]
+    else:
+        print("You cannot go there.")
 
 
 def execute_take(item_id):
