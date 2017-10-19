@@ -259,7 +259,7 @@ def execute_drop(item_id):
         if(item["id"] == item_id):
             player.inventory.remove(item)
             player.current_room["items"].append(item)
-        break
+			break
     
 
 def execute_command(command):
