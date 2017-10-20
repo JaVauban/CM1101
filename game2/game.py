@@ -64,7 +64,7 @@ def print_inventory_items(items):
     manner similar to print_room_items(). The only difference is in formatting:
     print "You have ..." instead of "There is ... here.". For example:
 
-    >>> print_inventory_items(inventory)
+    >>> print_inventory_items(player.inventory)
     You have id card, laptop, money.
     <BLANKLINE>
 
@@ -119,7 +119,7 @@ def print_room(room):
     Note: <BLANKLINE> here means that doctest should expect a blank line.
     """
     # Display room name
-    print(room["name"].upper() + "\n")
+    print("\n" + room["name"].upper() + "\n")
     # Display room description
     print(room["description"] + "\n")
     print_room_items(room)
@@ -259,7 +259,7 @@ def execute_drop(item_id):
         if(item["id"] == item_id):
             player.inventory.remove(item)
             player.current_room["items"].append(item)
-			break
+            break
     
 
 def execute_command(command):
